@@ -1,8 +1,8 @@
-# jiaweili415.github.io
+# jiaweili-math.github.io
 
 Personal academic website of Jiawei Li, Lecturer in Probability at the University of Edinburgh.
 
-Live at **https://jiaweili415.github.io**
+Live at **https://jiaweili-math.github.io**
 
 ## Files
 
@@ -14,10 +14,10 @@ Live at **https://jiaweili415.github.io**
 
 ## First-time setup
 
-1. On GitHub, create a **public** repository named exactly `jiaweili415.github.io`.
+1. On GitHub, create a **public** repository named exactly `jiaweili-math.github.io`.
 2. In the repo, click **Add file → Upload files**, drag in `index.html`, `README.md` and `freddie.jpg`, then **Commit changes**.
 3. Go to **Settings → Pages**. Under *Build and deployment*, set **Source: Deploy from a branch**, **Branch: `main` / `(root)`**, then **Save**.
-4. After 1–2 minutes the site is live at https://jiaweili415.github.io.
+4. After 1–2 minutes the site is live at https://jiaweili-math.github.io.
 
 **The photo:** to swap it, replace `freddie.jpg` with any portrait image (about 4:5). If the file is missing, the site simply hides that figure.
 
