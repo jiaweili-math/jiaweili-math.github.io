@@ -10,6 +10,7 @@ Live at **https://jiaweili-math.github.io**
 | --- | --- |
 | `index.html` | The whole site: content, styles and script in one file |
 | `freddie.jpg` | Photo of Freddie shown in the About section |
+| `CV.pdf` | Your CV; the site's CV buttons link to it |
 | `README.md` | This file |
 
 ## First-time setup
@@ -28,5 +29,5 @@ Open `index.html` on GitHub, click the pencil icon, edit, and commit. The site r
 - **Add a paper:** copy any `<li class="pub" …> … </li>` block in the Publications list and edit it. Set `data-type="preprint"` or `data-type="published"`; the filter counts update automatically. Wrap your own name as `<b>J. Li</b>` so it's highlighted.
 - **Add a talk:** copy an `<li>` in the Talks section into the right year (newest first). For an in-person talk keep `data-geo="latitude,longitude" data-city="…" data-country="…"` — that puts it on the globe tour. For an online talk drop those attributes and add `<span class="tag on">online</span>`. Online talks appear on the globe at the home base of the time (Oxford before Sep 2019, Pittsburgh until Sep 2022, Edinburgh afterwards). Counts and globe statistics update automatically.
 - **Add a course:** copy an `<li>` inside the Edinburgh card in the Teaching section.
-- **Update the CV:** search the file for `drive.google.com/file/d/1Wkdm` (it appears three times) and replace the link; update "July 2026" in the About and Contact sections.
+- **Update the CV:** upload the new PDF to the repo as `CV.pdf` (same name, so it replaces the old one and every link keeps working), then update the "last updated" month in the About and Contact sections of `index.html`.
 - **Colours:** all colours are defined at the top of the `<style>` block under `:root` (e.g. `--accent`).
