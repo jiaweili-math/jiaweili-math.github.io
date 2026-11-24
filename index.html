@@ -36,6 +36,8 @@
   --warm:#fbbf24;
   --warm-soft:rgba(251,191,36,.09);
   --warm-line:rgba(251,191,36,.35);
+  --orange:#fb923c;
+  --orange-soft:rgba(251,146,60,.10);
   --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   --display:"Space Grotesk","Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
@@ -170,6 +172,46 @@ strong{color:var(--text-strong);font-weight:600}
 .tag.pr{color:var(--warm);border-color:var(--warm-line);background:var(--warm-soft)}
 .tag.jn{color:var(--accent);border-color:var(--accent-line);background:var(--accent-soft)}
 
+/* ============ Talks ============ */
+.talk-sum{margin:-20px 0 36px;font-family:var(--mono);font-size:13px;color:var(--text-faint)}
+.talk-sum span{color:var(--accent)}
+.talks-layout{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:56px;align-items:start}
+.talks{grid-column:1;grid-row:1;min-width:0}
+.talk-year{padding:26px 0;border-top:1px solid var(--line)}
+.talk-year:first-child{border-top:0;padding-top:0}
+.yr-h{display:flex;align-items:baseline;gap:12px;margin:0 0 8px;font-family:var(--display);font-size:26px;font-weight:600;letter-spacing:-.02em;line-height:1.1;color:var(--text-strong)}
+.yr-h .n{font-family:var(--mono);font-size:12px;font-weight:400;letter-spacing:0;color:var(--text-faint)}
+.talk-list{list-style:none;margin:0;padding:0}
+.talk-list li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;padding:12px 10px;margin:0 -10px;border-top:1px solid var(--line);border-radius:6px;transition:background .25s}
+.talk-list li:first-child{border-top-color:transparent}
+.talk-list li.geo{cursor:pointer}
+.talk-list li.geo:hover{background:var(--bg-elev)}
+.talk-list li.now{background:linear-gradient(90deg,var(--orange-soft),transparent 75%)}
+.t-date{font-family:var(--mono);font-size:12.5px;color:var(--accent);padding-top:2px;transition:color .25s}
+.talk-list li.now .t-date{color:var(--orange)}
+.t-event{display:block;color:var(--text-strong);font-weight:500;line-height:1.45}
+.t-place{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:3px;color:var(--text-dim);font-size:14.5px}
+.tag.on{font-family:var(--mono);color:var(--accent-2);border-color:rgba(147,197,253,.35);background:rgba(147,197,253,.08)}
+.globe-card{grid-column:2;grid-row:1;position:sticky;top:calc(var(--nav-h) + 28px);padding:22px 24px 20px;border:1px solid var(--line);border-radius:16px;background:radial-gradient(120% 70% at 50% 0%,rgba(94,234,212,.06),transparent 60%),var(--bg-elev)}
+.globe-wrap{position:relative;width:100%;max-width:340px;aspect-ratio:1/1;margin:0 auto 14px}
+#globe{position:absolute;inset:0;width:100%;height:100%;display:block}
+.g-k{margin:0 0 10px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint)}
+.g-k span{color:var(--text-dim)}
+.g-date{margin:0;font-family:var(--mono);font-size:13px;color:var(--orange)}
+.g-event{margin:4px 0 2px;min-height:2.9em;color:var(--text-strong);font-weight:500;line-height:1.45}
+.g-place{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0;min-height:1.6em;color:var(--text-dim);font-size:14.5px}
+.g-from{font-family:var(--mono);font-size:12px;color:var(--text-faint)}
+.g-ticks{display:flex;align-items:flex-end;gap:3px;height:16px;margin:18px 0 6px}
+.g-ticks i{flex:1;height:8px;border-radius:1px;background:var(--line-strong);cursor:pointer;transition:background .25s,height .25s}
+.g-ticks i:hover{background:var(--text-faint)}
+.g-ticks i.done{background:rgba(94,234,212,.45)}
+.g-ticks i.ol{background:rgba(147,197,253,.18)}
+.g-ticks i.ol.done{background:rgba(147,197,253,.55)}
+.g-ticks i.cur{height:16px;background:var(--orange)}
+.g-years{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--text-faint)}
+.g-stats{margin:16px 0 0;padding-top:14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:12px;line-height:1.9;color:var(--text-faint)}
+.g-stats b{color:var(--text-strong);font-weight:500}
+
 /* ============ Teaching ============ */
 .teach{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:start}
 .card{border:1px solid var(--line);border-radius:14px;background:var(--bg-elev);padding:28px 28px 12px}
@@ -207,6 +249,9 @@ strong{color:var(--text-strong);font-weight:600}
 
 /* ============ Responsive ============ */
 @media (max-width:960px){
+  .talks-layout{grid-template-columns:minmax(0,1fr);gap:40px}
+  .talks,.globe-card{grid-column:1;grid-row:auto}
+  .globe-card{position:static;max-width:560px;width:100%;margin:0 auto}
   .contact-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:860px){
@@ -229,8 +274,11 @@ strong{color:var(--text-strong);font-weight:600}
   .card{padding:22px 20px 8px}
   .contact-grid{grid-template-columns:minmax(0,1fr)}
   .pub-bar{margin-top:52px}
+  .talk-sum{margin-top:-16px}
+  .yr-h{font-size:22px}
+  .globe-card{padding:18px 16px 16px}
 }
-@media (max-width:380px){
+@media (max-width:420px){
   .nav ul{gap:12px}
   .nav .link{font-size:12px}
   .filters button{padding:7px 9px}
@@ -253,8 +301,9 @@ strong{color:var(--text-strong);font-weight:600}
       <ul>
         <li><a class="link" href="#about"><span class="n">01</span>about</a></li>
         <li><a class="link" href="#research"><span class="n">02</span>research</a></li>
-        <li><a class="link" href="#teaching"><span class="n">03</span>teaching</a></li>
-        <li><a class="link" href="#contact"><span class="n">04</span>contact</a></li>
+        <li><a class="link" href="#talks"><span class="n">03</span>talks</a></li>
+        <li><a class="link" href="#teaching"><span class="n">04</span>teaching</a></li>
+        <li><a class="link" href="#contact"><span class="n">05</span>contact</a></li>
       </ul>
     </nav>
   </div>
@@ -520,10 +569,122 @@ strong{color:var(--text-strong);font-weight:600}
   </div>
 </section>
 
+<!-- ======================= TALKS ======================= -->
+<!--
+  To add a talk: copy an <li> into the right year (newest first), or copy a whole
+  <div class="talk-year"> block for a new year.
+  • In-person talk: keep data-geo="latitude,longitude" data-city="…" data-country="…"
+    (that is what puts it on the globe; look the coordinates up on any map site).
+  • Online talk: drop the data-… attributes and add <span class="tag on">online</span>.
+    On the globe it is shown at the home base of the time: Oxford before Sep 2019,
+    Pittsburgh until Sep 2022, Edinburgh from Oct 2022 (see HOME in the script).
+  Counts, the globe tour and its statistics all update automatically.
+-->
+<section class="section" id="talks">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-idx">03.</span><h2>Talks</h2><span class="rule"></span></div>
+    <p class="talk-sum reveal"><span id="talk-total">33</span> seminars, workshops and conferences since 2018</p>
+    <div class="talks-layout">
+      <aside class="globe-card reveal" id="globe-card" aria-label="Map of talk locations">
+        <div class="globe-wrap"><canvas id="globe" role="img" aria-label="A globe on which an orange dot hops between the cities where the talks were given, in chronological order"></canvas></div>
+        <p class="g-k">talk <span id="g-idx">01</span> / <span id="g-n">33</span></p>
+        <p class="g-date" id="g-date">&nbsp;</p>
+        <p class="g-event" id="g-event">&nbsp;</p>
+        <p class="g-place" id="g-place">&nbsp;</p>
+        <div class="g-ticks" id="g-ticks" aria-hidden="true"></div>
+        <div class="g-years" aria-hidden="true"><span id="g-y0"></span><span id="g-y1"></span></div>
+        <p class="g-stats" id="g-stats"></p>
+      </aside>
+      <div class="talks" id="talk-list">
+      <div class="talk-year reveal">
+        <h3 class="yr-h">2026<span class="n">4 talks</span></h3>
+        <ul class="talk-list">
+          <li data-geo="30.27,120.15" data-city="Hangzhou" data-country="China"><span class="t-date">Jul</span><span class="t-body"><span class="t-event">BIRS Workshop: New Trends in Rough Analysis: Open Challenges and Applications</span><span class="t-place">IASM, Hangzhou, China</span></span></li>
+          <li data-geo="52.52,13.4" data-city="Berlin" data-country="Germany"><span class="t-date">Mar</span><span class="t-body"><span class="t-event">Workshop Optimal Transport and Noise: OT meets (S)PDEs</span><span class="t-place">WIAS, Berlin, Germany</span></span></li>
+          <li data-geo="48.37,10.9" data-city="Augsburg" data-country="Germany"><span class="t-date">Jan</span><span class="t-body"><span class="t-event">Analysis Seminar</span><span class="t-place">University of Augsburg, Germany</span></span></li>
+          <li data-geo="50.73,7.1" data-city="Bonn" data-country="Germany"><span class="t-date">Jan</span><span class="t-body"><span class="t-event">Analysis Seminar</span><span class="t-place">University of Bonn, Germany</span></span></li>
+        </ul>
+      </div>
+
+      <div class="talk-year reveal">
+        <h3 class="yr-h">2025<span class="n">10 talks</span></h3>
+        <ul class="talk-list">
+          <li data-geo="51.5,-0.17" data-city="London" data-country="UK"><span class="t-date">Nov</span><span class="t-body"><span class="t-event">Stochastic Analysis Seminar</span><span class="t-place">Imperial College London, UK</span></span></li>
+          <li data-geo="39.96,116.31" data-city="Beijing" data-country="China"><span class="t-date">Oct</span><span class="t-body"><span class="t-event">Probability Seminar</span><span class="t-place">Beijing Institute of Technology, China</span></span></li>
+          <li><span class="t-date">Oct</span><span class="t-body"><span class="t-event">Seminar at the College of Mathematics and Statistics</span><span class="t-place">Chongqing University<span class="tag on">online</span></span></span></li>
+          <li data-geo="55.92,-3.17" data-city="Edinburgh" data-country="UK"><span class="t-date">Sep</span><span class="t-body"><span class="t-event">North British Probability Seminar</span><span class="t-place">Edinburgh, UK</span></span></li>
+          <li data-geo="53.41,-2.97" data-city="Liverpool" data-country="UK"><span class="t-date">Jul</span><span class="t-body"><span class="t-event">Recent Trends in Rough Analysis and Dynamical Systems: Theory and Practice</span><span class="t-place">Liverpool, UK</span></span></li>
+          <li data-geo="52.45,-1.93" data-city="Birmingham" data-country="UK"><span class="t-date">Jun</span><span class="t-body"><span class="t-event">Probabilistic study of nonlinear dispersive PDEs</span><span class="t-place">Birmingham, UK</span></span></li>
+          <li data-geo="55.92,-3.17" data-city="Edinburgh" data-country="UK"><span class="t-date">Apr</span><span class="t-body"><span class="t-event">HWU and UoE Analysis &amp; Probability afternoon</span><span class="t-place">Edinburgh, UK</span></span></li>
+          <li data-geo="55.92,-3.17" data-city="Edinburgh" data-country="UK"><span class="t-date">Mar</span><span class="t-body"><span class="t-event">Maxwell Institute Workshop on Stochastic Analysis</span><span class="t-place">Edinburgh, UK</span></span></li>
+          <li data-geo="55.92,-3.17" data-city="Edinburgh" data-country="UK"><span class="t-date">Mar</span><span class="t-body"><span class="t-event">Analysis Seminar</span><span class="t-place">University of Edinburgh, UK</span></span></li>
+          <li data-geo="51.96,7.62" data-city="Münster" data-country="Germany"><span class="t-date">Jan</span><span class="t-body"><span class="t-event">PDE Colloquium</span><span class="t-place">University of Münster, Germany</span></span></li>
+        </ul>
+      </div>
+
+      <div class="talk-year reveal">
+        <h3 class="yr-h">2024<span class="n">5 talks</span></h3>
+        <ul class="talk-list">
+          <li data-geo="54.77,-1.57" data-city="Durham" data-country="UK"><span class="t-date">Dec</span><span class="t-body"><span class="t-event">Workshop on Stochastic Analysis and Ergodic Theory</span><span class="t-place">Durham University, UK</span></span></li>
+          <li data-geo="52.94,-1.19" data-city="Nottingham" data-country="UK"><span class="t-date">Dec</span><span class="t-body"><span class="t-event">Probability and Statistics Seminar</span><span class="t-place">University of Nottingham, UK</span></span></li>
+          <li data-geo="51.62,-3.94" data-city="Swansea" data-country="UK"><span class="t-date">Jun</span><span class="t-body"><span class="t-event">Swansea–Tianjin Stochastic Analysis Workshop</span><span class="t-place">Swansea, UK</span></span></li>
+          <li data-geo="55.92,-3.17" data-city="Edinburgh" data-country="UK"><span class="t-date">Jun</span><span class="t-body"><span class="t-event">UK Research Network in Stochastics Kick-Off Workshop</span><span class="t-place">Edinburgh, UK</span></span></li>
+          <li><span class="t-date">Apr</span><span class="t-body"><span class="t-event">BICMR – ARIT Talk</span><span class="t-place"><span class="tag on">online</span></span></span></li>
+        </ul>
+      </div>
+
+      <div class="talk-year reveal">
+        <h3 class="yr-h">2023<span class="n">3 talks</span></h3>
+        <ul class="talk-list">
+          <li data-geo="51.75,-1.26" data-city="Oxford" data-country="UK"><span class="t-date">Sep</span><span class="t-body"><span class="t-event">North-East and Midlands Stochastic Analysis Seminar (NEMSA)</span><span class="t-place">Oxford, UK</span></span></li>
+          <li data-geo="31.3,121.5" data-city="Shanghai" data-country="China"><span class="t-date">Jul</span><span class="t-body"><span class="t-event">Probability Seminar</span><span class="t-place">Fudan University, Shanghai, China</span></span></li>
+          <li><span class="t-date">Jan</span><span class="t-body"><span class="t-event">Lisbon WADE – Webinar in Analysis and Differential Equations</span><span class="t-place"><span class="tag on">online</span></span></span></li>
+        </ul>
+      </div>
+
+      <div class="talk-year reveal">
+        <h3 class="yr-h">2022<span class="n">3 talks</span></h3>
+        <ul class="talk-list">
+          <li data-geo="55.92,-3.17" data-city="Edinburgh" data-country="UK"><span class="t-date">Nov</span><span class="t-body"><span class="t-event">North British Probability Seminar</span><span class="t-place">University of Edinburgh, UK</span></span></li>
+          <li data-geo="55.92,-3.17" data-city="Edinburgh" data-country="UK"><span class="t-date">Nov</span><span class="t-body"><span class="t-event">Mini-Symposium in Analysis and PDEs</span><span class="t-place">Maxwell Institute, UK</span></span></li>
+          <li><span class="t-date">Feb</span><span class="t-body"><span class="t-event">UNA-Europa Workshop</span><span class="t-place"><span class="tag on">online</span></span></span></li>
+        </ul>
+      </div>
+
+      <div class="talk-year reveal">
+        <h3 class="yr-h">2020<span class="n">1 talk</span></h3>
+        <ul class="talk-list">
+          <li><span class="t-date">Aug</span><span class="t-body"><span class="t-event">Bernoulli–IMS One World Symposium</span><span class="t-place"><span class="tag on">online</span></span></span></li>
+        </ul>
+      </div>
+
+      <div class="talk-year reveal">
+        <h3 class="yr-h">2019<span class="n">1 talk</span></h3>
+        <ul class="talk-list">
+          <li data-geo="40.44,-79.94" data-city="Pittsburgh" data-country="USA"><span class="t-date">Oct</span><span class="t-body"><span class="t-event">Probability/Math Finance Seminar</span><span class="t-place">Carnegie Mellon University, USA</span></span></li>
+        </ul>
+      </div>
+
+      <div class="talk-year reveal">
+        <h3 class="yr-h">2018<span class="n">6 talks</span></h3>
+        <ul class="talk-list">
+          <li data-geo="51.75,-1.26" data-city="Oxford" data-country="UK"><span class="t-date">Nov</span><span class="t-body"><span class="t-event">The 10th Oxford–Berlin Young Researchers Meeting on Applied Stochastic Analysis</span><span class="t-place">University of Oxford, UK</span></span></li>
+          <li data-geo="51.75,-1.26" data-city="Oxford" data-country="UK"><span class="t-date">Oct</span><span class="t-body"><span class="t-event">Stochastic Analysis Seminar</span><span class="t-place">University of Oxford, UK</span></span></li>
+          <li data-geo="36.67,117.06" data-city="Jinan" data-country="China"><span class="t-date">Sep</span><span class="t-body"><span class="t-event">Maths Seminar</span><span class="t-place">Taishan College, Shandong University, China</span></span></li>
+          <li data-geo="45.03,3.09" data-city="Saint-Flour" data-country="France"><span class="t-date">Jul</span><span class="t-body"><span class="t-event">The 48th Probability Summer School</span><span class="t-place">Saint-Flour, France</span></span></li>
+          <li data-geo="50.94,-1.4" data-city="Southampton" data-country="UK"><span class="t-date">Jul</span><span class="t-body"><span class="t-event">Young Researchers in Mathematics (YRM 2018)</span><span class="t-place">University of Southampton, UK</span></span></li>
+          <li data-geo="53.38,-1.49" data-city="Sheffield" data-country="UK"><span class="t-date">Jul</span><span class="t-body"><span class="t-event">Research Students Conference in Probability and Statistics (RSC 2018)</span><span class="t-place">University of Sheffield, UK</span></span></li>
+        </ul>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ======================= TEACHING ======================= -->
 <section class="section" id="teaching">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="sec-idx">03.</span><h2>Teaching</h2><span class="rule"></span></div>
+    <div class="sec-head reveal"><span class="sec-idx">04.</span><h2>Teaching</h2><span class="rule"></span></div>
     <div class="teach">
 
       <div class="card reveal">
@@ -558,7 +719,7 @@ strong{color:var(--text-strong);font-weight:600}
 <!-- ======================= CONTACT ======================= -->
 <section class="section" id="contact">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="sec-idx">04.</span><h2>Contact</h2><span class="rule"></span></div>
+    <div class="sec-head reveal"><span class="sec-idx">05.</span><h2>Contact</h2><span class="rule"></span></div>
     <div class="contact-grid">
 
       <div class="ccard reveal">
@@ -681,6 +842,235 @@ strong{color:var(--text-strong);font-weight:600}
       });
     });
   }
+
+  /* ---- Talks: per-year and total counts ---- */
+  var talkBox = $('#talk-list');
+  if (talkBox) {
+    var tot = 0;
+    $$('.talk-year', talkBox).forEach(function (y) {
+      var k = $$('li', y).length, n = $('.n', y); tot += k;
+      if (n) n.textContent = k + (k === 1 ? ' talk' : ' talks');
+    });
+    var tt = $('#talk-total'); if (tt) tt.textContent = tot;
+  }
+
+  /* ---- Talks globe: an orange dot hops between talk venues in chronological order ----
+     Land is a 1.3° equal-area dot grid computed from Natural Earth 1:50m land (one bit per grid point).
+     Stops are read from the talk list: every <li> with data-geo is an in-person talk. */
+  (function () {
+    var cvs = $('#globe'), card = $('#globe-card');
+    if (!cvs || !cvs.getContext || !card) return;
+    var g = cvs.getContext('2d'), D2R = Math.PI / 180;
+    var MASK = '////////+///P//9///wP/7//8D/yv//P+h/0P///wf8/8D///8/gP8f4P////8A8PkD+P////8AgPAd4P////8/AAAQHAD//////wcAAAAGgP3/9///DwAAADAAAAD/+f//AwAAAIAAAADAP///HwAAAABAAAAAAAzw7x8AAAAAABAAAAAAAAAAAAAAAAAAgAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAIADAAAAAAAAAAAAAAAAAAAAAAAAAABDAAAAAAAAAAAAAAAAAAAAAAAAAADwAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAcAAAAAAAAAAAAAAAAAAAAAAAAAAACABwAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAAAAAAAEAAAAAAAAADwAAAAAAAAAAAAAAAAAAAAgAEAAAAAAAAAPgAAAAAAAAAAAAAAAAAAAAADAAAAAAAAAPwAAAAAAAAAAAAAAAAAAIABQAAAAAAAAAAAfgAAAAAAAAAAAAAAAAAAgAKAAgAAAAAAAAD4AwAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAD+AwAAAAAAAAAAAAAAAAAAKACAAQAAAAAAAADwPwAAAAAAAAAAAAAAAAAAwB8AAAAAAAAAAAAA/AcAAAAAAAAAAAAAAAAAANAPAAgAAAAAAAAAAPhvAAAAAAAgAAAAAAAAAAwA/gFAAAAAAAAAAAAA/h8AAAAAAPgBAAAAAAAAfMD/AQAAAAAAAAAAAAD8PwAAAAAA8A8AAAAAAADwj/8PAAAAAAAAAAAAAMD/DwAAAAAA/gEAAAAAAAD+//8DAAAAAAAAAAAAAOD/BwAAAAAA/wEAAAAAAAD+//8HAAAAAAAAAAAAAID/PwAAAAAA/B8AAAAAAADw//9/AAAAAAAAAAAAAADw/wcAAAAAgP8HAAAAAAAA/P//PwAAAAAAAAAAAAAA8P8HAAAAAID/DxAAAAAAAPD//38AAAAAAAAAAAAAAID//wAAAAAA+P+BAwAAAAAA////BwAAAAAAAAAAAAAA4P//AQAAAAD+/+AAAAAAAID///8BAAAAAAAAAAAAAADg//8DAAAAAP7/wAMAAAAAAPz//wMgAAAAAAAAAAAAAID//x8AAAAA8P8HHAgAAAAAAP//HwABAAAAAAAAAAAAAPD//wMAAAAA//+BBwAAAAAAgP//AwAAAAAAAAAAAAAAAPz//wEAAACA///BAwAAAAAAAP//AQACAQAAAAAAAAAAAP7//wMAAAAA//8PDwAAAAAAAPifAwAAAAAAAAAAAAAAAPz//x8AAAAA+P//YAAAAAAAAMA/GAAAAAAAAAAAAAAAAOD///8AAAAAgP//DwQAAAAAAADAhwEAAAAAAAAAAAAAAAD+//9/AAAAAOD//wEAAAAAAAAA4CMAAAAAAAAAAAAAAACA////PwAAAADw//8BAAAAAAAAAAAgAAAAAAAAAAAAAAAAgP///38AAAAA4P//AQAAAAAAACABAAwAAAAAAAAAAAAAAAD/////AQAAAMD//wMAAAAAAAD4FIAZIAAAAAAAAAAAAAAA/P///w8AAAAA//8fAAAAAAAAHwAAfkAAAAAAAAAAAAAAAPD///9/AAAAAPj//wAAAAAAAAAAAPgbAAAAAAAAAAAAAACA/////wAAAADA//8HAAAAAAAwAATgHwIAAAAAAAAAAAAAAPD///8HAAAAAP7//wAAAAAAgINTmD4gAAAAAAAAAAAAAACA//9/BwAAAADg//8fAAAAAAB4fAaaQAAAAAAAAAAAAAAAEOD//x8AAAAAAP7//wcAAAAAAIMfAAEAAAAAAAAAAAAAAAAA/P//AQAAAACA////AQAAAABw+HMAAAAAAAAAAAAAAAAAAAD//z8AAAAAAPD//38AAAAAABt8AAAAAAAAAAAAAAAAAAAAwP//AwAAAAAA/v//HwAAAACQAAcAAAAAAAAAAAAAAAAAAAD8/x8AAACAAPL///8DAAAAwAzwAAAAAAAAAAAAAAAAAAAA4P9/AAAAAP7x////PwAAAABgAAYAAAAAAAAAAAAAAAAAAAD/fwAAAAD8//////8BAAADAAAABAAAAAAAAAAAAAAAAADA9f8AAAAA8P//////DwAACAACACAAAAAAAAAAAAAAAAAAgMH9AQAAAOD//////z8AAAYAhAAyAAAAAAAAAAAAAAAAAICBDwAAAADg//////9xAAAOAMADEAAAAAAAAAAAAAAAAADAAAAAAAAA/P//////gACABwDzARwAAAAAAAAAAAAAAAAAPgAAAAAAAP//////7wAA8ADAPwABAAAAAAAAAAAAAAAA8AcAAAAAAPD/////Pz8AgA8A/gEEABAAAAAAAAAAAAAA/AMAAAAAAID///////gDAH4A+gcQAAAAAAAAAAAAAAAA/AcAAAAAAAD///////gfAPwB/gMwAAAAAAAAAAAAAACAHwfAAQAAAID/////P/4fAP+B/wQAAAAAAAAAgAAAAADwgwEDAAAAAPD/////5/8D4H/4HwAAAAAAAAAAAAAAAAAfiAgAAAAAgP////+f/z/g/+H/BAAAAAAAAAAAAAAAAD8ABwAAAAAA/////5//H+D///8/AAAAAAAAAAAAAADIHwAAAAAAAID/////8/8D/v///08AAAAAAAAAAAAAgP4BAAAAAAAA+P///5//wf//////AAAAAAAAAAAAAAD9B2AAAAAAAPD////f/+T//////yAAAAAAAAAAAABA/wEIAAAAAAD5////+8///////x8AAAAAAAAAAAAA/j9DAAAAAACA/////7///////38AAAAAAAAAAAAA/f9/AAAAAADA///9/////////x8AAAAAAAAAAADg//8fAAAAAAD4/48D/////////0EAAAAAAAAAAID///8AAAAAAMD/AwD8////////kQEAAAAAAAAA4P///wAAAAAA4P8AAP///////x+wAAAAAAAAAID///8PAAAAAAD4AwD+//////8/DAcAAAAAAADA////BwAAAADwgIT8//j/////n+EAAAAAAAAA/P//PwAAAACADwD2/+P/////BwMCAAAAAAAA/P///wAAAADAB4D5//n/////e8AAAAAAAADA////DwAAAAB+gPzPx///////AwAAAAAAAID///8fAAAAAH40H+D5//////8AAAAAAAAA+P///wkAAACAT/7A8///////hwEAAAAAAPz///8JAAAA4P8//fz//////0gAAAAAAMD///+fAAAAgP//8/P//////wEAAAAAAPD///+HAQAA+P//////////XwAAAAAAgP///5sDAADw//////////8PAAAAAAD8////FAAAAP7/////////fwAAAAAA/P///w8AAGD+/////////wsAAAAA4P//838AALD5/////////wcCAAAA/P///gcAABL2////////DxgAAAD8/3/4AwAADMf///////8ABwAQwP//gx8AADAw////////AQ4AEOD/f+AGAACExv//////P2AA4MD/f8AJAACAz///////HwkAfv//BxxAAAC+////////8wD///8DAxwAwPP///////8H+f//DxkcAMD7////////g/////PgwAHe/f//////7v//PyweHODP//////+P/39/nD8A8M//////H/7/Ihn+APAX/////wcf9ZLRHwAPoP//PwsAPDn4BQAg9v8+AAC8DPwDAIj8HwEAYGzwDwAAfAEAACCGfwBA8IMBAIT4DwAQHAAAAPIHAoAAAID2DwMgAABwP4gAAADYAwAAAMgAAAAAAAAAAAAAAAAA', STEP = 1.3;
+
+    function vec(lat, lon) { var p = lat * D2R, l = lon * D2R; return [Math.cos(p) * Math.cos(l), Math.cos(p) * Math.sin(l), Math.sin(p)]; }
+    function latlon(v) { return [Math.asin(Math.max(-1, Math.min(1, v[2]))) / D2R, Math.atan2(v[1], v[0]) / D2R]; }
+    function angle(a, b) { return Math.acos(Math.max(-1, Math.min(1, a[0] * b[0] + a[1] * b[1] + a[2] * b[2]))); }
+    function slerp(a, b, t) {
+      var w = angle(a, b);
+      if (w < 1e-6) return a.slice();
+      var s = Math.sin(w), ka = Math.sin((1 - t) * w) / s, kb = Math.sin(t * w) / s;
+      return [ka * a[0] + kb * b[0], ka * a[1] + kb * b[1], ka * a[2] + kb * b[2]];
+    }
+    function ease(t) { return t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
+
+    var land = (function () {
+      var bin = atob(MASK), out = [], rows = Math.round(180 / STEP), k = 0, i, j, lat, n, v;
+      for (i = 0; i < rows; i++) {
+        lat = -90 + (i + .5) * 180 / rows; n = Math.max(1, Math.round(360 * Math.cos(lat * D2R) / STEP));
+        for (j = 0; j < n; j++, k++) if (bin.charCodeAt(k >> 3) >> (k & 7) & 1) { v = vec(lat, -180 + (j + .5) * 360 / n); out.push(v[0], v[1], v[2]); }
+      }
+      return new Float32Array(out);
+    })();
+
+    // stops from the talk list (DOM is newest-first; the tour runs oldest-first).
+    // Online talks have no data-geo: they are shown at the home base of the time.
+    var MON = { Jan: 1, Feb: 2, Mar: 3, Apr: 4, May: 5, Jun: 6, Jul: 7, Aug: 8, Sep: 9, Oct: 10, Nov: 11, Dec: 12 };
+    var HOME = [[201909, 'Oxford', 51.75, -1.26],        // before Sep 2019
+                [202210, 'Pittsburgh', 40.44, -79.94],   // Sep 2019 – Sep 2022
+                [1e9, 'Edinburgh', 55.92, -3.17]];       // from Oct 2022
+    var stops = [], online = 0, inPerson = 0, cities = {}, countries = {}, venues = [], placed = {};
+    $$('#talk-list li').forEach(function (li) {
+      var yr = li.closest('.talk-year').querySelector('.yr-h').firstChild.nodeValue.trim();
+      var mon = $('.t-date', li).textContent.trim(), ym = +yr * 100 + (MON[mon] || 1);
+      var geo = li.getAttribute('data-geo'), on = !geo, city, ll;
+      if (on) {
+        var h = HOME.filter(function (x) { return ym < x[0]; })[0];
+        city = h[1]; ll = [h[2], h[3]]; online++;
+      } else {
+        ll = geo.split(',').map(Number); city = li.getAttribute('data-city'); inPerson++;
+        cities[city] = 1; countries[li.getAttribute('data-country')] = 1;
+      }
+      var place = [].slice.call($('.t-place', li).childNodes)
+        .filter(function (n) { return !(n.classList && n.classList.contains('tag')); })
+        .map(function (n) { return n.textContent; }).join('').trim();
+      var v = vec(ll[0], ll[1]);
+      stops.push({ li: li, v: v, city: city, online: on, year: yr, date: mon + ' ' + yr,
+                   event: $('.t-event', li).textContent, place: place });
+      if (!placed[city]) { placed[city] = 1; venues.push(v); }
+    });
+    stops.reverse();
+    var N = stops.length;
+    if (!N) return;
+    $('#g-n').textContent = N;
+    $('#g-y0').textContent = stops[0].year; $('#g-y1').textContent = stops[N - 1].year;
+    $('#g-stats').innerHTML = '<b>' + N + '</b> talks · <b>' + inPerson + '</b> in person · <b>' + online + '</b> online<br><b>' +
+      Object.keys(cities).length + '</b> cities · <b>' + Object.keys(countries).length + '</b> countries';
+    var ticks = stops.map(function (s, i) {
+      var t = document.createElement('i'); t.title = s.date + ' · ' + s.city + (s.online ? ' (online)' : '');
+      t.addEventListener('click', function () { go(i); });
+      $('#g-ticks').appendChild(t); return t;
+    });
+    stops.forEach(function (s, i) {
+      s.li.tabIndex = 0; s.li.classList.add('geo');
+      s.li.addEventListener('click', function () { go(i); });
+      s.li.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(i); } });
+    });
+
+    // tour state
+    var cur = 0, from = stops[0].v, to = stops[0].v, H = 0, phase = 'dwell', t0 = 0, dur = 1, pulse0 = -1e9;
+    var trail = [], DWELL = 1800, view = [0, 0], running = false, visible = false, raf = 0, last = 0;
+    var W = 0, R = 0, C = 0, cl = 1, sl = 0, cp = 1, sp = 0, O = [0, 0, 0], bands = [[], [], []];
+    (function () { var ll = latlon(stops[0].v); view = [ll[0] - 14, ll[1]]; })();
+
+    function show(i) {
+      var s = stops[i];
+      $('#g-idx').textContent = (i < 9 ? '0' : '') + (i + 1);
+      $('#g-date').textContent = s.date; $('#g-event').textContent = s.event;
+      var gp = $('#g-place'); gp.textContent = s.place;
+      if (s.online) {
+        var tg = document.createElement('span'); tg.className = 'tag on'; tg.textContent = 'online';
+        var fr = document.createElement('span'); fr.className = 'g-from'; fr.textContent = 'from ' + s.city;
+        gp.appendChild(tg); gp.appendChild(fr);
+      }
+      ticks.forEach(function (t, k) { t.className = (stops[k].online ? 'ol ' : '') + (k < i ? 'done' : (k === i ? 'cur' : '')); });
+      stops.forEach(function (o, k) { o.li.classList.toggle('now', k === i); });
+    }
+    function progress(now) { return phase === 'hop' ? ease(Math.min(1, (now - t0) / dur)) : 1; }
+    function go(i) {
+      var now = performance.now(), e = progress(now), pos = slerp(from, to, e);
+      if (phase === 'hop' && e > 0.02) trail.push({ a: from, b: to, e: e, H: H, born: now });
+      from = pos; to = stops[i].v; cur = i;
+      var w = angle(from, to);
+      H = w < 1e-4 ? 0.07 : 0.05 + 0.3 * w / Math.PI;
+      dur = w < 1e-4 ? 650 : 700 + 1300 * w / Math.PI;
+      phase = 'hop'; t0 = now;
+      show(i);
+      if (reduce) { phase = 'dwell'; from = to; var ll = latlon(to); view = [ll[0] - 14, ll[1]]; draw(now); }
+      else start();
+    }
+
+    function size() {
+      var r = cvs.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = r.width; cvs.width = Math.round(W * dpr); cvs.height = Math.round(W * dpr);
+      g.setTransform(dpr, 0, 0, dpr, 0, 0); R = W * 0.44; C = W / 2;
+    }
+    function proj(v, h) {           // orthographic projection of (1 + h)·v → O = [x, y, depth]
+      var a = v[0] * cl + v[1] * sl, b = v[1] * cl - v[0] * sl, k = R * (1 + h);
+      O[0] = C + k * b; O[1] = C - k * (cp * v[2] - sp * a); O[2] = sp * v[2] + cp * a;
+      return O;
+    }
+    function seen(h) { var dx = O[0] - C, dy = O[1] - C; return O[2] > 0 || (h > 0 && dx * dx + dy * dy > R * R); }
+    function arc(a, b, upto, Hh, color) {
+      var n = Math.max(2, Math.ceil(40 * upto)), pen = false;
+      g.strokeStyle = color; g.beginPath();
+      for (var k = 0; k <= n; k++) {
+        var t = upto * k / n, h = Hh * Math.sin(Math.PI * t);
+        proj(slerp(a, b, t), h);
+        if (seen(h)) { if (pen) g.lineTo(O[0], O[1]); else g.moveTo(O[0], O[1]); pen = true; } else pen = false;
+      }
+      g.stroke();
+    }
+
+    function draw(now) {
+      var i, k, e = progress(now);
+      if (phase === 'hop' && e >= 1) {             // arrived
+        trail.push({ a: from, b: to, e: 1, H: H, born: now });
+        from = to; phase = 'dwell'; t0 = now; pulse0 = now;
+      }
+      if (trail.length > 5) trail.shift();
+      var dot = slerp(from, to, e), hd = phase === 'hop' ? H * Math.sin(Math.PI * e) : 0;
+      // camera follows the dot (it sits a little above the centre of the disc)
+      var ll = latlon(dot), dt = Math.min(64, now - (last || now)); last = now;
+      var f = reduce ? 1 : 1 - Math.exp(-dt / 320), dl = ((ll[1] - view[1] + 540) % 360) - 180;
+      view[0] += (ll[0] - 14 - view[0]) * f; view[1] += dl * f;
+      cl = Math.cos(view[1] * D2R); sl = Math.sin(view[1] * D2R); cp = Math.cos(view[0] * D2R); sp = Math.sin(view[0] * D2R);
+
+      g.clearRect(0, 0, W, W);
+      // disc + atmosphere
+      var grd = g.createRadialGradient(C - R * .35, C - R * .45, R * .1, C, C, R);
+      grd.addColorStop(0, '#15212c'); grd.addColorStop(1, '#0b1016');
+      g.save(); g.shadowColor = 'rgba(94,234,212,.28)'; g.shadowBlur = R * .18;
+      g.beginPath(); g.arc(C, C, R, 0, 2 * Math.PI); g.fillStyle = grd; g.fill(); g.restore();
+      g.lineWidth = 1; g.strokeStyle = 'rgba(94,234,212,.22)'; g.stroke();
+      // land dots in three brightness bands (darker towards the limb)
+      bands[0].length = bands[1].length = bands[2].length = 0;
+      for (i = 0; i < land.length; i += 3) {
+        var x = land[i], y = land[i + 1], z = land[i + 2], a = x * cl + y * sl, Z = sp * z + cp * a;
+        if (Z <= 0) continue;
+        bands[Z < .35 ? 0 : (Z < .7 ? 1 : 2)].push(C + R * (y * cl - x * sl), C - R * (cp * z - sp * a));
+      }
+      var ds = Math.max(1.1, R / 120), BC = ['rgba(94,234,212,.15)', 'rgba(94,234,212,.3)', 'rgba(94,234,212,.48)'];
+      for (k = 0; k < 3; k++) {
+        var B = bands[k]; g.fillStyle = BC[k]; g.beginPath();
+        for (i = 0; i < B.length; i += 2) g.rect(B[i] - ds / 2, B[i + 1] - ds / 2, ds, ds);
+        g.fill();
+      }
+      // every venue
+      g.fillStyle = 'rgba(232,240,248,.85)';
+      g.beginPath();
+      venues.forEach(function (v) { proj(v, 0); if (O[2] > 0.05) { g.moveTo(O[0] + 2, O[1]); g.arc(O[0], O[1], 2, 0, 2 * Math.PI); } });
+      g.fill();
+      // fading trail of previous hops + the current one
+      g.lineWidth = 1.4; g.lineCap = 'round';
+      trail = trail.filter(function (tr) { return now - tr.born < 7000; });
+      trail.forEach(function (tr) {
+        var al = 0.5 * (1 - (now - tr.born) / 7000);
+        if (al > 0.02) arc(tr.a, tr.b, tr.e, tr.H, 'rgba(251,146,60,' + al.toFixed(3) + ')');
+      });
+      if (phase === 'hop') { g.lineWidth = 1.8; arc(from, to, e, H, 'rgba(251,146,60,.95)'); }
+      // arrival pulse (online talks "broadcast" three blue rings from home)
+      var ol = stops[cur].online, PD = ol ? 1700 : 1200;
+      proj(to, 0);
+      if (O[2] > 0) {
+        g.lineWidth = 1.5;
+        for (k = 0; k < (ol ? 3 : 1); k++) {
+          var q = (now - pulse0 - k * 260) / PD;
+          if (q < 0 || q >= 1) continue;
+          g.strokeStyle = (ol ? 'rgba(147,197,253,' : 'rgba(251,146,60,') + (0.8 * (1 - q)).toFixed(3) + ')';
+          g.beginPath(); g.arc(O[0], O[1], 4 + (ol ? 26 : 22) * ease(q), 0, 2 * Math.PI); g.stroke();
+        }
+      }
+      // the dot (grows a little when it is "in the air")
+      proj(dot, hd);
+      if (seen(hd)) {
+        g.save(); g.shadowColor = 'rgba(251,146,60,.9)'; g.shadowBlur = 14;
+        g.fillStyle = '#fb923c'; g.beginPath(); g.arc(O[0], O[1], 4 * (1 + 2.2 * hd), 0, 2 * Math.PI); g.fill(); g.restore();
+        if (phase === 'dwell') {
+          var fs = Math.max(10, Math.round(R / 13));
+          g.font = '500 ' + fs + 'px "JetBrains Mono", ui-monospace, Menlo, monospace';
+          g.fillStyle = 'rgba(251,146,60,.95)'; g.textBaseline = 'middle';
+          var label = stops[cur].city + (ol ? ' · online' : ''), tx = O[0] + 10, tw = g.measureText(label).width;
+          if (tx + tw > W - 4) tx = O[0] - 10 - tw;
+          g.fillText(label, tx, O[1] - 10);
+        }
+      }
+      if (!reduce && phase === 'dwell' && now - t0 > DWELL) go((cur + 1) % N);
+    }
+
+    function frame(now) { raf = 0; if (!running) return; draw(now); raf = requestAnimationFrame(frame); }
+    function start() { if (running || reduce || !visible || document.hidden) return; running = true; last = 0; raf = requestAnimationFrame(frame); }
+    function stop() { running = false; if (raf) { cancelAnimationFrame(raf); raf = 0; } }
+
+    size(); show(0); t0 = performance.now(); pulse0 = t0; draw(t0);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (en) { visible = en[0].isIntersecting; if (visible) start(); else stop(); }).observe(card);
+    } else { visible = true; start(); }
+    document.addEventListener('visibilitychange', function () { if (document.hidden) stop(); else start(); });
+    var rg;
+    window.addEventListener('resize', function () { clearTimeout(rg); rg = setTimeout(function () { size(); draw(performance.now()); }, 150); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { draw(performance.now()); });
+  })();
 
   /* ---- Hero: boundary layer on a no-slip wall, by the random vortex method ----
      A vertical wall at x = xw; fluid on its right with free stream U∞ flowing down.
